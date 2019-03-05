@@ -52,9 +52,8 @@ def turn(board)
     turn(board)
   end
   move(board, index, current_player(board))
-  over?(board)
   display_board(board)
-
+  over?(board)
 end
 
 
