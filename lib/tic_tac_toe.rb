@@ -70,7 +70,7 @@ def won?(board)
         (board[win_index_1] == "X"  && board[win_index_2] == "X"  && board[win_index_3] == "X") ||
         (board[win_index_1] == "O"  && board[win_index_2] == "O"  && board[win_index_3] == "O")
 
-        return combo
+        return board[win_index_1]
       end
     end
 end
