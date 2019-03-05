@@ -118,7 +118,7 @@ def winner(board)
     board[winner]
   end
 end
- 
+
 def play(board)
   input = gets
 end
