@@ -123,6 +123,6 @@ def play(board)
     turn(board)
   end
   display_board(board)
-  puts "Congratulations !"
+  puts winner(board)
 
 end
