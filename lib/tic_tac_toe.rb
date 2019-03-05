@@ -44,18 +44,6 @@ def valid_move?(board, index)
 end
 
 
-def turn(board)
-  puts "Please enter 1-9:"
-  input = gets
-  index = input_to_index(input)
-  if !valid_move?(board, index)
-    turn(board)
-  end
-  move(board, index, current_player(board))
-  display_board(board)
-end
-
-
 def turn_count(board)
     counter = 0
     board.each do |box|
@@ -114,9 +102,23 @@ def winner(board)
   end
 end
 
+
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets
+  index = input_to_index(input)
+  if !valid_move?(board, index)
+    turn(board)
+  end
+  move(board, index, current_player(board))
+  display_board(board)
+end
+
+
 def play(board)
   until over?(board)
-    input = gets
+    # input = gets
     turn(board)
   end
 
