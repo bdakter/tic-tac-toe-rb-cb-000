@@ -1,7 +1,3 @@
-# Helper Method
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
 
 WIN_COMBINATIONS =[
     [0, 1, 2],  # Top row
@@ -13,6 +9,69 @@ WIN_COMBINATIONS =[
     [0, 4, 8],  #backslash
     [2, 4, 6]   #forward_slash
 ]
+
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
+  puts "-----------"
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
+  puts "-----------"
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
+
+end
+
+
+def input_to_index(user_input)
+  user_input.to_i-1
+end
+
+
+def move(array, index, value)
+  array[index] = value
+end
+
+
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
+
+
+def valid_move?(board, index)
+  if !position_taken?(board, index) && index.between?(0, 8)
+    true
+  else
+    false
+  end
+end
+
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = get_input
+  index = input_to_index(input)
+  if !valid_move?(board, index)
+    turn(board)
+  end
+  move(board, index)
+  display_board(board)
+
+end
+
+
+def turn_count(board)
+    counter = 0
+    board.each do |box|
+      if ["X", "O"].include?box.strip
+        counter +=1
+      end
+    end
+    counter
+  end
+
+
+def current_player(board)
+  turn_count(board).even? ? "X" : "O"
+end
+
 
 def won?(board)
     WIN_COMBINATIONS.detect do |combo|
@@ -29,9 +88,11 @@ def won?(board)
     end
 end
 
+
 def full?(board)
   !board.detect{|i| i == " "}
 end
+
 
 def draw?(board)
   if
@@ -50,9 +111,11 @@ def over?(board)
   full?(board) || won?(board) || draw?(board)
 end
 
+
 def winner(board)
   if over?(board)
     winner = won?(board)[0]
     board[winner]
   end
 end
+ 
