@@ -46,7 +46,7 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = get_input
+  input = gets
   index = input_to_index(input)
   if !valid_move?(board, index)
     turn(board)
@@ -122,3 +122,5 @@ end
 def play(board)
   input = gets
 end
+
+
