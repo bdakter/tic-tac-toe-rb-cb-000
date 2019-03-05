@@ -122,6 +122,7 @@ def play(board)
     # input = gets
     turn(board)
   end
+  display_board(board)
   # puts "Congratulations #{winner(board)}!"
 
 end
