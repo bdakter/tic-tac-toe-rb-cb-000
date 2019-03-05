@@ -53,7 +53,6 @@ def turn(board)
   end
   move(board, index, current_player(board))
   display_board(board)
-  over?(board)
 end
 
 
@@ -117,4 +116,6 @@ end
 
 def play(board)
   input = gets
+
+  over?(board)
 end
